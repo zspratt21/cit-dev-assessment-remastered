@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Commands\Color;
+namespace App\Commands\User;
 
-use App\Color;
 use App\Exceptions\DatabaseConnectionException;
 use App\Exceptions\MissingTableException;
+use App\User;
 use LaravelZero\Framework\Commands\Command;
 
-class ListColorCommand extends Command
+class ListUserCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'color:list';
+    protected $signature = 'user:list';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'List all colors in the database';
+    protected $description = 'List all users in the database';
 
     /**
      * Execute the console command.
@@ -29,20 +29,20 @@ class ListColorCommand extends Command
     public function handle(): void
     {
         try {
-            if (Color::exists()) {
-                $colors = Color::all();
-                $this->table(['ID', 'Name', 'Hex'], $colors->map(function ($color) {
+            if (User::exists()) {
+                $users = User::all();
+                $this->table(['ID', 'Name', 'Email'], $users->map(function (User $user) {
                     return [
-                        $color->id,
-                        $color->name,
-                        $color->hex,
+                        $user->id,
+                        $user->full_name(),
+                        $user->email,
                     ];
                 }));
             } else {
-                $this->warn('No colors found. Add some with the color:add command.');
+                $this->warn('No users found. Add some with the user:add command.');
             }
         } catch (DatabaseConnectionException|MissingTableException $e) {
-            $this->error('Error listing colors');
+            $this->error('Error listing users');
             $this->error($e->getMessage());
         }
     }

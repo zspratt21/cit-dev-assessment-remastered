@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Commands\Color;
+namespace App\Commands\User;
 
-use App\Color;
 use App\Exceptions\DatabaseConnectionException;
 use App\Exceptions\MissingTableException;
+use App\User;
 use LaravelZero\Framework\Commands\Command;
 
-class DeleteColorCommand extends Command
+class DeleteUserCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'color:delete {id}';
+    protected $signature = 'user:delete {id}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Delete a Color by Id';
+    protected $description = 'Delete a User by Id';
 
     /**
      * Execute the console command.
@@ -29,15 +29,15 @@ class DeleteColorCommand extends Command
     public function handle(): void
     {
         try {
-            $color = Color::find($this->argument('id'));
-            if ($color) {
-                $color->delete();
-                $this->info("Color {$color->name} deleted successfully");
+            $user = User::find($this->argument('id'));
+            if ($user) {
+                $user->delete();
+                $this->info("User {$user->full_name()} deleted successfully");
             } else {
-                $this->error('Color not found');
+                $this->error('User not found');
             }
         } catch (DatabaseConnectionException|MissingTableException $e) {
-            $this->error('Error deleting color');
+            $this->error('Error deleting user');
             $this->error($e->getMessage());
         }
     }
