@@ -28,6 +28,7 @@ class User extends CLIModel
                 if (empty($value)) {
                     throw new InvalidArgumentException("$field cannot be empty");
                 }
+
                 return trim(strtolower($value));
             },
         );
@@ -70,7 +71,7 @@ class User extends CLIModel
     {
         $decoded_json = json_decode($json, true);
         if (! $decoded_json) {
-            throw new InvalidArgumentException("Invalid JSON data. Please check your JSON file.");
+            throw new InvalidArgumentException('Invalid JSON data. Please check your JSON file.');
         }
 
         return $decoded_json;
@@ -93,7 +94,7 @@ class User extends CLIModel
             }
         }
         if (empty($users)) {
-            throw new InvalidArgumentException("No valid data found in CSV file.");
+            throw new InvalidArgumentException('No valid data found in CSV file.');
         }
 
         return $users;
