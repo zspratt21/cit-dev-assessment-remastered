@@ -18,8 +18,7 @@ class UserCommand extends Command
             ]);
             $this->info("User {$user->full_name()} added successfully");
         } catch (DatabaseConnectionException|MissingTableException|InvalidArgumentException $e) {
-            $this->error('Error adding user');
-            $this->error($e->getMessage());
+            $this->error("Error adding user: {$e->getMessage()}");
         }
     }
 }
