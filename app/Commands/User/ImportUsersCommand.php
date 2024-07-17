@@ -24,7 +24,7 @@ class ImportUsersCommand extends UserCommand
      *
      * @var string
      */
-    protected $description = 'List all users in the database';
+    protected $description = 'Import users from a file into the database';
 
     /**
      * Execute the console command.

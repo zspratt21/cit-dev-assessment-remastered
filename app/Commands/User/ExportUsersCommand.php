@@ -23,7 +23,7 @@ class ExportUsersCommand extends Command
      *
      * @var string
      */
-    protected $description = 'List all users in the database';
+    protected $description = 'Export all users in the database to a file';
 
     /**
      * Execute the console command.
