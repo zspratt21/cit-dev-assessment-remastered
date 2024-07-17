@@ -34,5 +34,4 @@ class UserExportCollection extends Collection
 
         return $data;
     }
-
 }

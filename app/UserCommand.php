@@ -9,7 +9,8 @@ use LaravelZero\Framework\Commands\Command;
 
 class UserCommand extends Command
 {
-    protected function addUser(string $first_name, string $last_name, string $email) : void {
+    protected function addUser(string $first_name, string $last_name, string $email): void
+    {
         try {
             $user = User::create([
                 'first_name' => $first_name,

@@ -2,7 +2,6 @@
 
 namespace App\Handlers\File;
 
-
 use App\Exceptions\FileNotFoundException;
 
 class FileHandler
@@ -27,5 +26,4 @@ class FileHandler
     {
         file_put_contents($this->file_path, $content);
     }
-
 }

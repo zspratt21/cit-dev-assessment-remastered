@@ -2,9 +2,9 @@
 
 namespace App\Commands\User;
 
-use App\User;
 use App\Exceptions\DatabaseConnectionException;
 use App\Exceptions\MissingTableException;
+use App\User;
 use InvalidArgumentException;
 use LaravelZero\Framework\Commands\Command;
 
