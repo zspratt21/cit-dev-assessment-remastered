@@ -52,7 +52,7 @@ class User extends CLIModel
                 if (! filter_var($cleanedValue, FILTER_VALIDATE_EMAIL)) {
                     throw new InvalidArgumentException("Invalid email: $cleanedValue");
                 }
-                $existingQuery = User::where('email', $cleanedValue);
+                $existingQuery = $this->where('email', $cleanedValue);
                 if ($existingQuery->exists() && $existingQuery->first()?->id !== $this->id) {
                     throw new InvalidArgumentException("Email $cleanedValue is already associated with another user.");
                 }
