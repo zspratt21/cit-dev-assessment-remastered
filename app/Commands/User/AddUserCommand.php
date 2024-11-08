@@ -2,9 +2,9 @@
 
 namespace App\Commands\User;
 
-use App\UserCommand;
+use LaravelZero\Framework\Commands\Command;
 
-class AddUserCommand extends UserCommand
+class AddUserCommand extends Command
 {
     /**
      * The name and signature of the console command.
